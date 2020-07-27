@@ -6,8 +6,8 @@ services:
     hostname: postgres
     container_name: postgres
     environment:
-      POSTGRES_PASSWORD: "postgres"
-      POSTGRES_USER: "postgres"
+      POSTGRES_USER: "user_db"
+      POSTGRES_PASSWORD: "db_password_123"
     ports:
       - "5432:5432"
     volumes:
@@ -16,12 +16,13 @@ services:
       - development-network
       
   pgadmin:
-    image: dpage/pgadmin4
+    build: pgadmin/
+    image: dev/pgadmin:1.0
     hostname: pgadmin4
     container_name: pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: "postgres@dev.com"
-      PGADMIN_DEFAULT_PASSWORD: "postgres"
+      PGADMIN_DEFAULT_EMAIL: "user_db@dev.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "db_password_123"
     ports:
       - "9090:80"
     depends_on:
