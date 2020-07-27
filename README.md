@@ -1,2 +1,2 @@
 # dev-ops
-Repositório para scrips para treinamento e aprendizado com Docker/Kafka/Kubernetes
+Repositório de scrips para treinamento e aprendizado com Docker/Kafka/Kubernetes
