@@ -1,0 +1,17 @@
+
+-- entrando dentro do container
+docker-compose exec kafka bash
+
+-- criando um novo topico dentro do container
+docker-compose exec kafka kafka-topics --create --topic example-topic --bootstrap-server kafka:9092 --replication-factor 1 --partitions 1
+
+-- lendo os dados da fila
+docker-compose exec kafka kafka-console-consumer --bootstrap-server kafka:9092 --from-beginning --topic example-topic
+
+-- escrevendo na fila
+docker-compose exec kafka kafka-console-producer --topic example-topic --broker-list kafka:9092
+
+
+-- cria volume para o postgres
+docker volume create postgres_database
+

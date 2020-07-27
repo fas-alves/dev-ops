@@ -1,0 +1,85 @@
+# Create a topic if a topic with the same name does NOT exist
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--create \
+--topic topic-1 \
+--replication-factor 1 \
+--partitions 3 \
+--if-not-exists
+
+# Alter the number of partitions (can only go up)
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--alter \
+--topic topic-1 \
+--partitions 7
+
+# Delete a topic (this is irreversible)
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--delete \
+--topic topic-1
+
+# List all topics
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--list
+
+# Describe all the topics at once
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--describe
+
+# Identify any overrides to topics (configs added to the defaults)
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--describe \
+--topics-with-overrides
+
+# Topics that are not in-sync with all replicas
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--describe \
+--under-replicated-partitions
+
+# Topics without a leader replica
+bin/kafka-topics.sh --zookeeper zookeeper1:2181/kafka \
+--describe \
+--unavailable-partitions
+
+# Describe the configurations for all topics (only in addition to the defaults)
+bin/kafka-configs.sh --zookeeper zookeeper1:2181/kafka \
+--describe \
+--entity-type topics
+
+# Describe the configurations for a specific topic (defaults will not show)
+bin/kafka-configs.sh --zookeeper zookeeper1:2181/kafka \
+--describe \
+--entity-type topics \
+--entity-name topic-1
+
+# Change the topics message retention
+bin/kafka-configs.sh --zookeeper zookeeper1:2181/kafka \
+--alter \
+--entity-type topics \
+--entity-name connect-test \
+--add-config retention.ms=3600000
+
+# Describe the configurations for all brokers (defaults will not show)
+bin/kafka-configs.sh --zookeeper zookeeper1:2181/kafka \
+--entity-type brokers \
+--entity-default \
+--describe
+
+# Describe the configuration for broker 0 (defaults will not show)
+bin/kafka-configs.sh --zookeeper zookeeper1:2181/kafka \
+--entity-type brokers \
+--entity-name 0 \
+--describe
+
+# Add a custom config to broker 0 that will change it's log cleaner thread count
+bin/kafka-configs.sh --zookeeper zookeeper1:2181/kafka \
+--entity-type brokers \
+--entity-name 0 \
+--alter \
+--add-config log.cleaner.threads=2
+
+# Remove all custom configs (not including defaults) from broker 0
+bin/kafka-configs.sh --zookeeper zookeeper1:2181/kafka \
+--entity-type brokers \
+--entity-name 0 \
+--alter \
+--delete-config log.cleaner.threads

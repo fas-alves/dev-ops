@@ -1,0 +1,45 @@
+# List all the consumer groups
+bin/kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
+--list
+
+# Describe a specific consumer group
+bin/kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
+--describe \
+--group application1
+
+# Describe the active members of the group 
+bin/kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
+--describe \
+--group application1 \
+--members
+
+# If the group has active members, get a more verbose output
+bin/kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
+--describe \
+--group application1 \
+--members \
+--verbose
+
+# Describe the state of the group
+bin/kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
+--describe \
+--group application1 \
+--state
+
+# Delete a consumer group (only works if there are no active members). 
+bin/kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
+--delete \
+--group application1
+
+# Delete multiple consumer groups
+bin/kafka-consumer-groups.sh --bootstrap-server kafka1:9092 \
+--delete \
+--group application1 \
+--group application2
+
+# Reset offsets for a consumer group
+bin/kafka-consumer-groups.sh --bootstrap-server kafka:9092 \
+--reset-offsets \
+--group application1 \
+--topic topic-1 \
+--to-latest
