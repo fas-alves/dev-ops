@@ -19,8 +19,8 @@ services:
     hostname: pgadmin4
     container_name: pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: "fernando.alves@prudential.com"
-      PGADMIN_DEFAULT_PASSWORD: "prud1234"
+      PGADMIN_DEFAULT_EMAIL: "dev@dev.com"
+      PGADMIN_DEFAULT_PASSWORD: "senha1234"
     ports:
       - "9090:80"
     depends_on:
