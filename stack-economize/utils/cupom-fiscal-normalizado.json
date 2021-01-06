@@ -1,0 +1,72 @@
+{
+    "idCupomFiscal": "dcdbea4d-195d-4d44-a33f-c605e077537f",
+    "idUsuario": "537dbacc-6252-46bb-a973-b65d074bf69e",
+    "idGrupoUsuario": "7420a4bd-0eb5-4cae-b24e-f3455811c260",
+    "numero": "9875653",
+    "modelo": "MODELO-01",
+    "serie": "C",
+    "dataEmissao": "19/08/2020 19:32:00",
+    "qrCode": "0000000001007",
+    "valorTotal": 1234.98,
+    "desconto": 100.72,
+    "valorPago": 1100.2,
+    "estabelecimento": {
+        "idEstabelecimento" : "",
+        "idRede" : "",
+        "cnpj": "83453602000121",
+        "razaoSocial": "Loja do Matheus Ltda",
+        "inscricaoEstadual": "123124234",
+        "uf": "RJ",
+        "nomeFantasia": "WS Store",
+        "endereco": "Rua Voluntarios da Patria, 123, loja A",
+        "cep": "22280010",
+        "bairro": "Botafogo",
+        "municipio": "Rio de Janeiro",
+        "telefone": "+5521977776666",
+        "pais": "Brasil"
+    },
+    "itensCupomFiscal": [
+        {
+            "idProduto": "",
+            "idProdutoEstabelecimento": "",
+            "idPrecoEstabelecimento": "",
+            "linha": 1,
+            "codigo": "00000000001",
+            "descricao": "Produto 1",
+            "quantidade": 1,
+            "unidade": "KG",
+            "valorUnitario": 12.3,
+            "valorTotal": 1234.32,
+            "valorDesconto": 123.21,
+            "ean": "00000000001"
+        },
+        {
+            "idProduto": "",
+            "idProdutoEstabelecimento": "",
+            "idPrecoEstabelecimento": "",
+            "linha": 2,
+            "codigo": "00000000002",
+            "descricao": "Produto 2",
+            "quantidade": 1,
+            "unidade": "UN",
+            "valorUnitario": 2.00,
+            "valorTotal": 40.00,
+            "valorDesconto": 5.00,
+            "ean": "00000000002"
+        },
+        {
+            "idProduto": "",
+            "idProdutoEstabelecimento": "",
+            "idPrecoEstabelecimento": "",
+            "linha": 3,
+            "codigo": "00000000003",
+            "descricao": "Produto 3",
+            "quantidade": 1,
+            "unidade": "LT",
+            "valorUnitario": 1.50,
+            "valorTotal": 50.00,
+            "valorDesconto": 4.30,
+            "ean": "00000000003"
+        }
+    ]
+}

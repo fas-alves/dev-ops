@@ -1,0 +1,381 @@
+{
+  "id": "economize-app",
+  "realm": "economize-app",
+  "accessTokenLifespan": 7200,
+  "ssoSessionIdleTimeout": 18000,
+  "enabled": true,
+  "roles": {
+    "realm": [
+      {
+        "id": "4546da12-3268-407c-8eaa-6ecddc5eaace",
+        "name": "economize-user",
+        "description": "Perfil de usuario.",
+        "composite": true,
+        "composites": {
+          "client": {
+            "service-java-usuarios": [
+              "user"
+            ],
+            "service-java-produtos": [
+              "user"
+            ],
+            "service-java-compras": [
+              "user"
+            ],
+            "service-java-notificacoes": [
+              "user"
+            ]
+          }
+        },
+        "clientRole": false,
+        "containerId": "economize-app",
+        "attributes": {}
+      },      
+      {
+        "id": "feb82e11-68c5-4ac4-bb2e-9d5ddfab4aa1",
+        "name": "economize-admin",
+        "description": "Perfil de administrador do aplicativo.",
+        "composite": true,
+        "composites": {
+          "client": {
+            "service-java-usuarios": [
+              "admin"
+            ],
+            "service-java-produtos": [
+              "admin"
+            ],
+            "service-java-compras": [
+              "admin"
+            ],
+            "service-java-notificacoes": [
+              "admin"
+            ]
+          }
+        },
+        "clientRole": false,
+        "containerId": "economize-app",
+        "attributes": {}
+      }
+    ],
+    "client": {
+      "service-java-usuarios": [
+        {
+          "id": "b51fd851-e111-457b-a658-48f7f2282caf",
+          "name": "user",
+          "description": "Perfil de usuario.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "8e9d4ae3-de58-436f-a96a-06f2b938ea94",
+          "attributes": {}
+        },
+        {
+          "id": "8c9a6a72-f211-415b-8b25-7770afa37ac1",
+          "name": "admin",
+          "description": "Perfil de administrador.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "8e9d4ae3-de58-436f-a96a-06f2b938ea94",
+          "attributes": {}
+        }
+      ],
+      "service-java-produtos": [
+        {
+          "id": "7f56b86d-9937-42dd-a3d8-305c80757ad2",
+          "name": "user",
+          "description": "Perfil de usuario.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "402772d2-d1d0-469a-98a9-99523fe15735",
+          "attributes": {}
+        },
+        {
+          "id": "47a9251c-995e-499c-8953-5c4d1aea3235",
+          "name": "admin",
+          "description": "Perfil de administrador.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "402772d2-d1d0-469a-98a9-99523fe15735",
+          "attributes": {}
+        }
+      ],
+      "service-java-compras": [
+        {
+          "id": "f37082b3-516f-4501-b16c-cb8c2a67fae9",
+          "name": "user",
+          "description": "Perfil de usuario.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "d20a678c-06f8-4935-be5b-29349a1e0859",
+          "attributes": {}
+        },
+        {
+          "id": "cb78f077-4d09-4142-aba4-2c82dd5ef470",
+          "name": "admin",
+          "description": "Perfil de administrador.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "d20a678c-06f8-4935-be5b-29349a1e0859",
+          "attributes": {}
+        }
+      ],
+      "service-java-notificacoes": [
+        {
+          "id": "74c6da00-22a1-45c0-9d36-45afd824ef19",
+          "name": "user",
+          "description": "Perfil de usuario.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "d7e69da3-ab4c-4b4b-afc7-e5ac469f3d7c",
+          "attributes": {}
+        },
+        {
+          "id": "e0785aed-c2e5-4939-92b1-96ed07b7f721",
+          "name": "admin",
+          "description": "Perfil de administrador.",
+          "composite": false,
+          "clientRole": true,
+          "containerId": "d7e69da3-ab4c-4b4b-afc7-e5ac469f3d7c",
+          "attributes": {}
+        }
+      ]      
+    }      
+  },
+  "groups": [
+    {
+      "id": "4a02537e-9631-4f2c-ae88-6ed4797c0311",
+      "name": "economize-user",
+      "path": "/economize-user",
+      "attributes": {},
+      "realmRoles": [
+        "economize-user"
+      ],
+      "clientRoles": {},
+      "subGroups": []
+    },
+    {
+      "id": "398f27f3-9599-45c3-ba7c-14e88300e836",
+      "name": "economize-admin",
+      "path": "/economize-admin",
+      "attributes": {},
+      "realmRoles": [
+        "economize-admin"
+      ],
+      "clientRoles": {},
+      "subGroups": []
+    }
+  ],
+  "clients": [
+    {
+      "id": "8e9d4ae3-de58-436f-a96a-06f2b938ea94",
+      "clientId": "service-java-usuarios",
+      "rootUrl": "http://localhost:8080",
+      "adminUrl": "http://localhost:8080",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "080bfc05-1884-421a-b67a-0aee70c4a04b",
+      "redirectUris": [
+        "http://localhost:8080/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8080"
+      ],
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "protocolMappers": [
+        {
+          "id": "38fb15c5-69d0-4709-a21d-9a9438e981b5",
+          "name": "user-group-id-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "user-group-id",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "claim.name": "user-group-id",
+            "jsonType.label": "String"
+          }
+        }
+      ]
+    },
+    {
+      "id": "402772d2-d1d0-469a-98a9-99523fe15735",
+      "clientId": "service-java-produtos",
+      "rootUrl": "http://localhost:8080",
+      "adminUrl": "http://localhost:8080",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "631925fe-26ef-44cc-81e5-27415f94d180",
+      "redirectUris": [
+        "http://localhost:8080/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8080"
+      ],
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "protocolMappers": [
+        {
+          "id": "40e5a296-7070-4398-bc4d-bc520af1799e",
+          "name": "user-group-id-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "user-group-id",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "claim.name": "user-group-id",
+            "jsonType.label": "String"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d20a678c-06f8-4935-be5b-29349a1e0859",
+      "clientId": "service-java-compras",
+      "rootUrl": "http://localhost:8080",
+      "adminUrl": "http://localhost:8080",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "ba462e43-be9a-40cb-833e-54ac37d66137",
+      "redirectUris": [
+        "http://localhost:8080/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8080"
+      ],
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "protocolMappers": [
+        {
+          "id": "4eccc492-f48a-454e-b850-80df86e1825a",
+          "name": "user-group-id-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "user-group-id",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "claim.name": "user-group-id",
+            "jsonType.label": "String"
+          }
+        }
+      ]
+    },
+    {
+      "id": "d7e69da3-ab4c-4b4b-afc7-e5ac469f3d7c",
+      "clientId": "service-java-notificacoes",
+      "rootUrl": "http://localhost:8080",
+      "adminUrl": "http://localhost:8080",
+      "enabled": true,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "74c6da00-22a1-45c0-9d36-45afd824ef19",
+      "redirectUris": [
+        "http://localhost:8080/*"
+      ],
+      "webOrigins": [
+        "http://localhost:8080"
+      ],
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": true,
+      "serviceAccountsEnabled": true,
+      "authorizationServicesEnabled": true,
+      "protocolMappers": [
+        {
+          "id": "8df1409d-47f9-485e-80a8-a6901f6c03d4",
+          "name": "user-group-id-mapper",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "userinfo.token.claim": "true",
+            "user.attribute": "user-group-id",
+            "id.token.claim": "false",
+            "access.token.claim": "true",
+            "claim.name": "user-group-id",
+            "jsonType.label": "String"
+          }
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "e4d81baf-e30e-4698-b2ba-27b59b9d10cc",
+      "username": "service-account-service-java-usuarios",
+      "enabled": true,
+      "emailVerified": false,
+      "serviceAccountClientId": "service-java-usuarios",
+      "realmRoles": [
+        "offline_access"
+      ],
+      "clientRoles": {
+        "realm-management": [
+          "manage-users"
+        ],
+        "service-java-usuarios": [
+          "uma_protection"
+        ],
+        "account": [
+          "manage-account",
+          "view-profile"
+        ]
+      }
+    },
+    {
+      "id": "a4af4ee7-1d21-4687-8bed-bac2588e464c",
+      "username": "economize-admin",
+      "email": "admin@economiza.dev",
+      "firstName": "Admin",
+      "lastName": "Economize",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials" : [
+        {
+          "type": "password",
+          "temporary": false,
+          "value": "senha123"
+        }
+      ],
+      "groups": ["economize-admin"],
+      "realmRoles": [
+        "offline_access"
+      ]
+    },
+    {
+      "id": "a4af4ee7-1d21-4687-8bed-bac2588e464c",
+      "username": "economize-user",
+      "email": "user@economiza.dev",
+      "firstName": "User",
+      "lastName": "Economize",
+      "enabled": true,
+      "emailVerified": true,
+      "credentials" : [
+        {
+          "type": "password",
+          "temporary": false,
+          "value": "senha123"
+        }
+      ],
+      "groups": ["economize-user"],
+      "realmRoles": [
+        "offline_access"
+      ]
+    }
+  ]
+}

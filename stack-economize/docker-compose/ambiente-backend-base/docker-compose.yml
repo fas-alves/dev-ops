@@ -1,0 +1,102 @@
+version: '3'
+
+services:
+  postgres:
+    build: postgres/
+    image: dev/postgres:1.0
+    hostname: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "db_password_123"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_database:/var/lib/postgresql/data
+    networks:
+      - development-network
+      
+  pgadmin:
+    build: pgadmin/
+    image: dev/pgadmin:1.0
+    hostname: pgadmin4
+    container_name: pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "user_db@dev.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "db_password_123"
+    ports:
+      - "9090:80"
+    depends_on:
+      - postgres
+    networks:
+      - development-network
+  
+  zookeeper:
+    image: confluentinc/cp-zookeeper:5.5.1
+    hostname: zookeeper
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - development-network
+
+  kafka:
+    image: confluentinc/cp-kafka:5.5.1
+    hostname: kafka
+    container_name: kafka
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    ports:
+      - "9092:9092"
+    depends_on:
+      - zookeeper
+    networks:
+      - development-network
+
+  keycloak:
+    build: keycloak/
+    image: dev/keycloak:1.0
+    hostname: keycloak
+    container_name: keycloak
+    environment: 
+      KEYCLOAK_USER: dev
+      KEYCLOAK_PASSWORD: dev123
+      KEYCLOAK_IMPORT: /tmp/realm-export.json
+      DB_VENDOR: postgres
+      DB_ADDR: postgres
+      DB_PORT: 5432
+      DB_DATABASE: "keycloak"
+      DB_USER: "keycloak_user"
+      DB_PASSWORD: "keycloak123"
+    ports: 
+      - "9093:8080"
+    depends_on:
+      - postgres
+    networks:
+      - development-network
+
+  nginx:
+    build: nginx/
+    image: dev/nginx:1.0
+    hostname: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    networks:
+      - development-network
+
+networks: 
+  development-network:
+    driver: bridge
+
+volumes:
+    postgres_database:
+        external: true
