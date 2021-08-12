@@ -43,3 +43,5 @@ bin/kafka-consumer-groups.sh --bootstrap-server kafka:9092 \
 --group application1 \
 --topic topic-1 \
 --to-latest
+
+# teste de edicao do arquivo
